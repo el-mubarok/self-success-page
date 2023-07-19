@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Success Page</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-  
+
+<body style="width: 100%; height: 100vh; padding: 0; margin: 0; display: flex; justify-content: center; align-items: center;">
+
+  <i class="bi bi-patch-check-fill" style="font-size: 10rem;"></i>
+
+  <script>
+    function get_query() {
+      var url = document.location.href;
+      var qs = url.substring(url.indexOf('?') + 1).split('&');
+      for (var i = 0, result = {}; i < qs.length; i++) {
+        qs[i] = qs[i].split('=');
+        result[qs[i][0]] = decodeURIComponent(qs[i][1]);
+      }
+      return result;
+    }
+    var result = get_query();
+    var bg = result['bg'];
+    var color = result['color'];
+    console.log(result);
+
+    $("body").css("background-color", bg);
+    $(".bi").css("color", color);
+  </script>
 </body>
+
 </html>
